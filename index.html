@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ぷらいべったールビ振りツール</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+    <body>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+        <div id="app">
+            <h1>ぷらいべったー用ルビ振りツール</h1>
+            <h3>使い方説明</h3>
+            <div class="explanation">
+                <ul>
+                    <li>｜漢字《かんじ》の形式をぷらいべったー用のルビに置き換えるツールです。</li>
+                    <li>「｜」「《」「》」の記号は全て、全角じゃないと反応しません。</li>
+                    <li>上のテキストエリアに変換したい文章を入れて変換を押せば、下に変換後の文章が表示されます。コピーボタンで下の文章を全てコピーできます。</li>
+                    <li>その他、細かい注意事項は下に記載します。</li>
+                </ul>
+            </div>
+            <div class="textarea">
+                <textarea id="novel" class="ruby" rows="10" name="novel"></textarea>
+            </div>
+            <div class="changeButton">
+                <button class="change" onclick="ruby()">変換</button>
+                <button class="change" onclick="copyToClipboard()">コピー</button>
+            </div>
+            <div class="textarea">
+                <textarea readonly id="rubyNovel" class="ruby" rows="10" name="rubyNovel"></textarea>
+            </div>
+
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>      
+        <script type="text/javascript">
+        //ルビ変換
+            function ruby(){
+                const novel = document.getElementById("novel").value;
+                const rubyNovel = novel.replace(/｜(.+?)《(.+?)》/g, '<ruby><rb>$1</rb><rp>（</rp><rt>$2</rt><rp>）</rp></ruby>');
+                document.getElementById("rubyNovel").textContent = rubyNovel;
+                clickToast();
+            }
+        //変換ボタントースト
+            function clickToast() {
+                toastr.options.timeOut = 2500; // 2.5秒
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "3000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                Command: toastr["success"]("変換しました");
+            };
+            //コピートースト
+            function copyToast() {
+                toastr.options.timeOut = 2500; // 2.5秒
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "3000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                Command: toastr["success"]("コピーしました");
+            };
+
+            //コピペボタン
+            function copyToClipboard() {
+                // コピー対象をJavaScript上で変数として定義する
+                var copyTarget = document.getElementById("rubyNovel");
+
+                // コピー対象のテキストを選択する
+                copyTarget.select();
+
+                // 選択しているテキストをクリップボードにコピーする
+                document.execCommand("Copy");
+
+                // コピーをお知らせする
+                copyToast();
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+html, body{
+    font-size: 100%;
+    font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+h1, h3{
+    text-align: center;
+}
+.explanation{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+ul{
+    list-style-type: disc"
+}
+.change{
+    color: #fff;
+    background-color: #3e62ad;
+    width: 100px;
+    border-style: none;
+    padding: 10px;
+    margin: 20px;
+    font-size: 16px;
+}
+.change:hover{
+    color: #fff;
+    background: #4c6cb3;
+}
+.changeButton{
+    text-align: center;
+}
+.textarea{
+    text-align: center;
+}
+.ruby{
+    width: 80%;
+    height: 30%;
+}
