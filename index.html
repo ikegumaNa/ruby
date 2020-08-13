@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     </head>
     <body>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
         <div id="app">
             <h1>ぷらいべったー用ルビ振りツール</h1>
             <h3>使い方説明</h3>
@@ -30,58 +29,45 @@
                 <textarea readonly id="rubyNovel" class="ruby" rows="10" name="rubyNovel"></textarea>
             </div>
 
-        </div>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>      
+        </div>    
+        <script src="https://riversun.github.io/jsframe/jsframe.js"></script>      
         <script type="text/javascript">
         //ルビ変換
             function ruby(){
                 const novel = document.getElementById("novel").value;
-                const rubyNovel = novel.replace(/｜(.+?)《(.+?)》/g, '<ruby><rb>$1</rb><rp>（</rp><rt>$2</rt><rp>）</rp></ruby>');
+                const rubyNovel = novel.replace(/(｜|::|\|)(.+?)《(.+?)》/g, '<ruby><rb>$2</rb><rp>（</rp><rt>$3</rt><rp>）</rp></ruby>');
                 document.getElementById("rubyNovel").textContent = rubyNovel;
                 clickToast();
             }
         //変換ボタントースト
             function clickToast() {
-                toastr.options.timeOut = 2500; // 2.5秒
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "3000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                Command: toastr["success"]("変換しました");
+                const jsFrame = new JSFrame();
+                jsFrame.showToast({
+                    duration: 1500,//表示時間(millis)
+                    align: 'top',// 表示位置 'top'/'center'/'bottom'(default)
+                    style: {
+                        borderRadius: '2px',
+                        backgroundColor: 'rgba(68,97,123,0.985)',
+                    },
+                    html: '<span style="color:white;">変換しました。</span>',
+                    closeButton: true,//閉じるボタンを表示
+                    closeButtonColor: 'white'//閉じるボタンの色
+                });
             };
             //コピートースト
             function copyToast() {
-                toastr.options.timeOut = 2500; // 2.5秒
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "3000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                Command: toastr["success"]("コピーしました");
+                const jsFrame = new JSFrame();
+                jsFrame.showToast({
+                    duration: 1500,//表示時間(millis)
+                    align: 'top',// 表示位置 'top'/'center'/'bottom'(default)
+                    style: {
+                        borderRadius: '2px',
+                        backgroundColor: 'rgba(68,97,123,0.985)',
+                    },
+                    html: '<span style="color:white;">コピーしました。</span>',
+                    closeButton: true,//閉じるボタンを表示
+                    closeButtonColor: 'white'//閉じるボタンの色
+                });
             };
 
             //コピペボタン
