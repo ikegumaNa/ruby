@@ -2,34 +2,41 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>ぷらいべったールビ振りツール</title>
+        <title>Privatter（ぷらいべったー・プライベッター）ルビ振りツール</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name=”description” content=”rubyタグに変換するツールです。ぷらいべったーなど、rubyタグが必要なサイトを使用の際にお使いください。”>
     </head>
     <body>
-        <div id="app">
-            <h1>ぷらいべったー用ルビ振りツール</h1>
-            <h3>使い方説明</h3>
-            <div class="explanation">
-                <ul>
-                    <li>｜漢字《かんじ》の形式をぷらいべったー用のルビに置き換えるツールです。</li>
-                    <li>「｜」「《」「》」の記号は全て、全角じゃないと反応しません。</li>
-                    <li>上のテキストエリアに変換したい文章を入れて変換を押せば、下に変換後の文章が表示されます。コピーボタンで下の文章を全てコピーできます。</li>
-                    <li>その他、細かい注意事項は下に記載します。</li>
-                </ul>
-            </div>
-            <div class="textarea">
-                <textarea id="novel" class="ruby" rows="10" name="novel"></textarea>
-            </div>
-            <div class="changeButton">
-                <button class="change" onclick="ruby()">変換</button>
-                <button class="change" onclick="copyToClipboard()">コピー</button>
-            </div>
-            <div class="textarea">
-                <textarea readonly id="rubyNovel" class="ruby" rows="10" name="rubyNovel"></textarea>
-            </div>
-
-        </div>    
+        <h1>ぷらいべったー　ルビ振りツール</h1>
+        <h3>使い方説明</h3>
+        <div class="explanationBox">
+            <ul>
+                <li>｜漢字《かんじ》、|漢字《かんじ》、::漢字《かんじ》の形式を<a href="https://privatter.net/">ぷらいべったー</a>用のルビに置き換えるツールです。</li>
+                <li>開始記号は「｜（全角バーティカルバー）」「|（半角バーティカルバー）」「::（コロン二つ）」の三種類が使用できます。二重括弧は「《」「》」のみ反応します。</li>
+                <li>上のテキストエリアに変換したい文章を入れて変換を押せば、下に変換後の文章が表示されます。コピーボタンで下の文章を全てコピーできます。</li>
+                <li>その他、細かい注意事項は下に記載します。</li>
+            </ul>
+        </div>
+        <div class="textarea">
+            <textarea id="novel" class="ruby" rows="10" name="novel"></textarea>
+        </div>
+        <div class="changeButton">
+            <button class="change" onclick="ruby()">変換</button>
+            <button class="change" onclick="copyToClipboard()">コピー</button>
+        </div>
+        <div class="textarea">
+            <textarea readonly id="rubyNovel" class="ruby" rows="10" name="rubyNovel"></textarea>
+        </div>
+        <div class="explanationBox">
+            <b>その他の注意事項など</b>
+            <ul>
+                <li>ページリロードで文章は消えます。別のツールで執筆後、コピペする事を強くお勧めします。</li>
+                <li>開始記号や二重括弧のいずれかが欠けている場合や、小説内で開始記号を使用する場合は意図せぬ場所にルビが振られる事がございます。ご了承ください。</li>
+                <li>「｜漢字《かんじ》」だと、「&lt;ruby&gt;&lt;rb&gt;漢字&lt;/rb&gt;&lt;rp&gt;（&lt;/rp&gt;&lt;rt&gt;かんじ&lt;/rt&gt;&lt;rp&gt;）&lt;/rp&gt;&lt;/ruby&gt;」のように変換しています。</li>
+                <li>不具合報告、ご意見・ご要望は<a href="https://docs.google.com/forms/d/e/1FAIpQLSftCc7k1fCqyhmC3JnAo6BgqF21jvbBVxyZ9NsbNFVEF97gzg/viewform?usp=sf_link">こちら</a>からお願いします。ご要望に関してはできる限りお応えしたいですが、趣味で作ったものであるため、ご要望にお応えできない場合がございます。ご了承ください。</li>
+            </ul>
+        </div>
         <script src="https://riversun.github.io/jsframe/jsframe.js"></script>      
         <script type="text/javascript">
         //ルビ変換
