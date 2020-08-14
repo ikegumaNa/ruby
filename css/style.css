@@ -12,7 +12,8 @@ h1, h3{
     border: double 5px #dcdddd;
     width: 80%;
     text-align:center;
-    margin-left:auto;margin-right:auto;
+    margin-left:auto;
+    margin-right:auto;
     text-align:left;
 }
 .explanation{
