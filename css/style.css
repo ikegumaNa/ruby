@@ -6,17 +6,9 @@ html, body{
 h1, h3{
     text-align: center;
 }
-.explanationBox{
-    padding: 0.5em 1em;
-    margin: 2em 0;
-
-    width: 80%;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:left;
-}
 .explanation{
+    margin: 10px 0;
+    width: 80%;
     border: double 5px #dcdddd;
     text-align:center;
     margin-left:auto;
