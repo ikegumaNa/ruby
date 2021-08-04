@@ -43,9 +43,13 @@
         <script type="text/javascript">
         //ルビ変換
             function ruby(){
+                //変換前のテキストボックスに入力された文章を取得
                 const novel = document.getElementById("novel").value;
+                //ルビと本文を判定し、htmlタグに変換
                 const rubyNovel = novel.replace(/(｜|::|\|)(.+?)《(.+?)》/g, '<ruby><rb>$2</rb><rp>（</rp><rt>$3</rt><rp>）</rp></ruby>');
+                //変換後のテキストボックスに出力
                 document.getElementById("rubyNovel").textContent = rubyNovel;
+                //変換したトースト表示
                 clickToast();
             }
         //変換ボタントースト
@@ -53,7 +57,7 @@
                 const jsFrame = new JSFrame();
                 jsFrame.showToast({
                     duration: 1500,//表示時間(millis)
-                    align: 'top',// 表示位置 'top'/'center'/'bottom'(default)
+                    align: 'top',// 表示位置
                     style: {
                         borderRadius: '2px',
                         backgroundColor: 'rgba(68,97,123,0.985)',
@@ -83,13 +87,10 @@
             function copyToClipboard() {
                 // コピー対象をJavaScript上で変数として定義する
                 var copyTarget = document.getElementById("rubyNovel");
-
                 // コピー対象のテキストを選択する
                 copyTarget.select();
-
                 // 選択しているテキストをクリップボードにコピーする
                 document.execCommand("Copy");
-
                 // コピーをお知らせする
                 copyToast();
         }
